@@ -1,5 +1,8 @@
 # SPDX-License-Identifier: MIT
-# Model config: route all taskflow model slots to GLM via cliproxy (OpenAI-compatible chat completions)
+# Model config: route ALL taskflow model slots to GLM via cliproxy.
+# "please-set-default-model-via-env" and "gpt-4.1" are the DEFAULT_MODEL
+# fallback names used by tasks that have no explicit model field — map
+# them so model-less tasks also resolve to GLM instead of the placeholder.
 seclab-taskflow-agent:
   version: "1.0"
   filetype: model_config
@@ -7,6 +10,8 @@ models:
    code_analysis: zai-org/GLM-5.3-Flash
    general_tasks: zai-org/GLM-5.3-Flash
    triage: zai-org/GLM-5.3-Flash
+   gpt-4.1: zai-org/GLM-5.3-Flash
+   please-set-default-model-via-env: zai-org/GLM-5.3-Flash
 model_settings:
   code_analysis:
     api_type: chat_completions
